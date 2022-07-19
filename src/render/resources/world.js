@@ -324,3 +324,24 @@ export function moveParticles() {
   particleGroup.rotation.y = time * 0.75;
   // particleGroup.rotation.z = time * 1.0;
 }
+
+export function  createPhysicsWorld(Ammo) {
+
+  let physicsWorld;
+  let collisionConfiguration = new Ammo.btDefaultCollisionConfiguration(),
+    dispatcher = new Ammo.btCollisionDispatcher(collisionConfiguration), // dispatch calculations for overlapping pairs/ collisions.
+    overlappingPairCache = new Ammo.btDbvtBroadphase(), //broadphase collision detection list of all possible colliding pairs
+    constraintSolver = new Ammo.btSequentialImpulseConstraintSolver(); //causes the objects to interact properly, like gravity, game logic forces, collisions
+
+  // see bullet physics docs for info
+  physicsWorld = new Ammo.btDiscreteDynamicsWorld(
+    dispatcher,
+    overlappingPairCache,
+    constraintSolver,
+    collisionConfiguration
+  );
+
+  // add gravity
+  physicsWorld.setGravity(new Ammo.btVector3(0, -50, 0));
+  return physicsWorld
+}

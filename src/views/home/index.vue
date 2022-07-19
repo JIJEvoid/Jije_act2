@@ -8,7 +8,6 @@ import { onMounted } from "vue";
 
 onMounted(()=>{
   let gameInstace = new Game()
-
 })
 </script>
 <style>
