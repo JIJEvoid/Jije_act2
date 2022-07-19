@@ -33,4 +33,14 @@ import {
 
 const initGames = ()=>{
     createWorld();
+    // createPhysicsWorld();
+
 }
+
+class Game{
+    constructor() {
+        initGames()
+    }
+}
+
+export default Game
